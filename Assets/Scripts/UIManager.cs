@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
         try
         { //load the previous settings
             string inputText = System.IO.File.ReadAllText(@"Assets/Text_Document.txt");
-            if (inputText.Substring(0, 12) == "High score: ")
+            if (inputText[..12] == "High score: ")
             {
                 int index = 12; //get index past "High score: "
                 for (; inputText[index] != '\n'; ++index) { } //ignore the high score value
@@ -216,7 +216,7 @@ public class UIManager : MonoBehaviour
         try
         {
             string inputText = System.IO.File.ReadAllText(@"Assets/Text_Document.txt");
-            if (inputText.Substring(0, 12) == "High score: ")
+            if (inputText[..12] == "High score: ")
             {
                 int highScore = 0;
                 for (int i = 12; inputText[i] != '\n'; ++i)
