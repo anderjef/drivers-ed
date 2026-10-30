@@ -84,7 +84,7 @@ public class Car : MonoBehaviour
             useMouse = false;
         }
 
-        Vector3 carMove = new Vector3(sensitivity * maxSpeed * Time.deltaTime / 3, 0.7f - this.transform.localPosition.y, speed * Time.deltaTime); //y is kept at 0.7, z is forward
+        Vector3 carMove = new(sensitivity * maxSpeed * Time.deltaTime / 3, 0.7f - this.transform.localPosition.y, speed * Time.deltaTime); //y is kept at 0.7, z is forward
         if (useMouse)
         {
             mousex = Input.mousePosition.x; //get mouse x position
