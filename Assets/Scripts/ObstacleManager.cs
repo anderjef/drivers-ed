@@ -60,13 +60,13 @@ public class ObstacleManager : MonoBehaviour
                     }
                 }
                 obstacles[i].transform.GetChild(Random.Range(0, 9)).gameObject.SetActive(true); //re-randomize the barrel's prefab model
-                obstacles[i].GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); //set the barrel's velocity to zero
+                obstacles[i].GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 0); //set the barrel's velocity to zero
                 obstacles[i].GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0); //set the barrel's velocity to zero
                 obstacles[i].transform.eulerAngles = new Vector3(270, 0, 0); //set the barrel standing upright
                 obstacles[i].transform.localPosition = new Vector3(Random.Range(-6f, 6f), 0.05f, barrelDist + Random.Range(0, barrelVariance)); //x position is random on the road, y position is ground level, z position is at the back within some range
                 barrelDist += distBetweenBarrels; //the next object to spawn will do so slightly further back
             }
-            if (obstacles[i].transform.localPosition.z > car.transform.localPosition.z + trackLength && obstacles[i].GetComponent<Rigidbody>().velocity.magnitude < 2) // the velocity check is to verify that this barrel hasn't been launched by the player
+            if (obstacles[i].transform.localPosition.z > car.transform.localPosition.z + trackLength && obstacles[i].GetComponent<Rigidbody>().linearVelocity.magnitude < 2) // the velocity check is to verify that this barrel hasn't been launched by the player
             {
                 obstacles[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; //otherwise the barrel will fall through the floor as it may not be generated there yet
             }
@@ -95,7 +95,7 @@ public class ObstacleManager : MonoBehaviour
         {
             //re-randomizing the barrel's prefab model and location checking are unecessary as this function is only called by Obstacle.cs in the instance of a collision at spawn
             obstacles[index].transform.eulerAngles = new Vector3(270, 0, 0); //set the barrel standing upright
-            obstacles[index].GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); //set the barrel's velocity to zero
+            obstacles[index].GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 0); //set the barrel's velocity to zero
             obstacles[index].transform.localPosition = new Vector3(Random.Range(-6f, 6f), 0.05f, barrelDist + Random.Range(0, barrelVariance)); //x position is random on the road, y position is ground level, z position is at the back within some range
             barrelDist += distBetweenBarrels; //the next object to spawn will do so slightly further back
 

@@ -47,7 +47,7 @@ public class Track : MonoBehaviour //THIS FILE IS DEPRECATED
         for (int i = 0; i < nObstacles.Count; ++i)
         {
             nObstacles[i].transform.eulerAngles = new Vector3(270, 0, 0); //set the barrel standing up
-            nObstacles[i].GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); //set the barrel's velocity to zero
+            nObstacles[i].GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 0); //set the barrel's velocity to zero
             nObstacles[i].transform.localPosition = new Vector3(Random.Range(-5.75f, 5.75f), 0.05f, Random.Range(i * (trackLength / nObstacles.Count) + 0.4f, (i + 1) * (trackLength / nObstacles.Count) - 0.4f)); //x position is random on the road, y position is ground level, z position is within the length of a piece of track (0.4f is the approximate radius of a barrel)
             nObstacles[i].SetActive(true);
         }
