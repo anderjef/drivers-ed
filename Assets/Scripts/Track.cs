@@ -90,7 +90,7 @@ public class Track : MonoBehaviour //THIS FILE IS DEPRECATED
                         car.minSpeed = 0; //so car won't resume motion
                         car.maxSpeed = 0; //so car won't resume motion
                         car.speed = 0; //stop car
-                        Invoke("BackToMenu", 3f); //upon finishing the tutorial, display GameOverPanel for 3 seconds before returning to menu
+                        Invoke(nameof(BackToMenu), 3f); //upon finishing the tutorial, display GameOverPanel for 3 seconds before returning to menu
                     }
                 }
             }
