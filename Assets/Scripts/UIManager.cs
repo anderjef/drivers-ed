@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
                             carChoice += inputText[index] - 48; //- 48 because 0 in ASCII is 48
                         }
                         carModel.value = carChoice; //set the slider
-                        car.updateCarModel(carChoice); //set the car's model
+                        car.UpdateCarModel(carChoice); //set the car's model
                         index++; //get past the newline character
                         if (inputText.Substring(index, 13) == "Sensitivity: ")
                         {
@@ -123,27 +123,27 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void updateStartSensitivity()
+    public void UpdateStartSensitivity()
     {
         car.sensitivity = startSensitivitySlider.value * 0.4f + 0.8f;
     }
 
-    public void updateSensitivity()
+    public void UpdateSensitivity()
     {
         car.sensitivity = sensitivitySlider.value * 0.4f + 0.8f;
     }
 
-    public void pickModel()
+    public void PickModel()
     {
-        car.updateCarModel((int)carModel.value);
+        car.UpdateCarModel((int)carModel.value);
     }
 
-    public void updateDifficulty() //difficulty sliders change the car's minimum speed from 10-20
+    public void UpdateDifficulty() //difficulty sliders change the car's minimum speed from 10-20
     {
         car.minSpeed = difficultySlider.value * 10 + 10;
     }
 
-    public void startUpdateDifficulty() //difficulty sliders change the car's minimum speed from 10-20
+    public void StartUpdateDifficulty() //difficulty sliders change the car's minimum speed from 10-20
     {
         car.minSpeed = startDifficultySlider.value * 10 + 10;
     }
@@ -207,7 +207,7 @@ public class UIManager : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SaveSettingsAndHighScoreToTextFile(car.getMoney()); //so it is possible to achieve a high score then quit that game but have the high score saved
+        SaveSettingsAndHighScoreToTextFile(car.GetMoney()); //so it is possible to achieve a high score then quit that game but have the high score saved
         GameManager.gameManager.GameEnd(); //quit button returns to menu
     }
 

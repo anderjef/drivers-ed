@@ -42,7 +42,7 @@ public class Car : MonoBehaviour
         audio2 = ticksources[1].clip;
         audio3 = ticksources[2].clip;
         carRev = ticksources[3];
-        this.updateCarModel((int)uiManager.carModel.value);
+        this.UpdateCarModel((int)uiManager.carModel.value);
     }
 
     // Update is called once per frame
@@ -243,7 +243,7 @@ public class Car : MonoBehaviour
         }
     }
 
-    public void updateCarModel(int carChoice)
+    public void UpdateCarModel(int carChoice)
     {
         for (int i = 1; i < 9; ++i) //ensures only one car model is active at a time
         {
@@ -254,7 +254,7 @@ public class Car : MonoBehaviour
         //this.GetComponent<MeshCollider>().sharedMesh = (Mesh)AssetDatabase.LoadAssetAtPath("Assets/Racing Cars Pack 1/FBXs/Car" + carChoice.ToString() + ".fbx", typeof(Mesh)); //get the mesh (for the mesh collider) corresponding to the chosen car //assetdatabase cannot be built
     }
 
-    public int getMoney()
+    public int GetMoney()
     {
         return this.money;
     }
