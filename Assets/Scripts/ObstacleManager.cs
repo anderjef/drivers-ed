@@ -17,7 +17,7 @@ public class ObstacleManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        car = FindObjectOfType<Car>();
+        car = FindFirstObjectByType<Car>();
         for (int i = 0; i < numObstacles; ++i) //initialize the array of obstacles objects
         {
             obstacles.Add(Instantiate(barrelPrefab, transform));

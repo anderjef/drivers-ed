@@ -17,7 +17,7 @@ public class Track : MonoBehaviour //THIS FILE IS DEPRECATED
     // Start is called before the first frame update
     private void Start()
     {
-        uiManager = FindObjectOfType<UIManager>();
+        uiManager = FindFirstObjectByType<UIManager>();
         uiManager.ObjectiveInstruction.SetActive(false); //(tutorial mode) starts off with no objective instructions
 
         for (int i = 0; i < (int)Random.Range(numObstacles.x, numObstacles.y); ++i) //initialize the array of obstacles objects
@@ -84,7 +84,7 @@ public class Track : MonoBehaviour //THIS FILE IS DEPRECATED
                     }
                     else if (this.gameObject.name == "Track 5") //only tutorial has a fifth track; tutorial over
                     {
-                        Car car = FindObjectOfType<Car>(); //to set the car's speed
+                        Car car = FindFirstObjectByType<Car>(); //to set the car's speed
                         uiManager.gameOverPanel.SetActive(true);
                         //Time.timeScale = 0 doesn't work here because Invoke needs to count down
                         car.minSpeed = 0; //so car won't resume motion

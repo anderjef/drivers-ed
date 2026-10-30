@@ -29,7 +29,7 @@ public class Car : MonoBehaviour
         controller = GetComponent<CharacterController>();
         speed = minSpeed; //car starts off slow
         collidedValue = Shader.PropertyToID("_CollidedValue");
-        uiManager = FindObjectOfType<UIManager>();
+        uiManager = FindFirstObjectByType<UIManager>();
         ControlReminder.SetActive(true);
         SpeedReminder.SetActive(true);
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Tutorial")) //tutorial mode doesn't have a coin reminder

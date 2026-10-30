@@ -10,7 +10,7 @@ public class Obstacle : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        obstacleManager = FindObjectOfType<ObstacleManager>();
+        obstacleManager = FindFirstObjectByType<ObstacleManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,7 +51,7 @@ public class Obstacle : MonoBehaviour
                 {
                     if (obstacleManager == null) //at launch, ObstacleManager's Start function is called and then this OnTriggerEnter function and then this Start function sometimes
                     {
-                        obstacleManager = FindObjectOfType<ObstacleManager>();
+                        obstacleManager = FindFirstObjectByType<ObstacleManager>();
                     }
                     obstacleManager.Respawn(index, this.tag); //tell ObstacleManager.cs to respawn this object
                     spawnTime = Time.time;
@@ -61,7 +61,7 @@ public class Obstacle : MonoBehaviour
                 {
                     if (obstacleManager == null) //at launch, ObstacleManager's Start function is called and then this OnTriggerEnter function and then this Start function sometimes
                     {
-                        obstacleManager = FindObjectOfType<ObstacleManager>();
+                        obstacleManager = FindFirstObjectByType<ObstacleManager>();
                     }
                     if (this.CompareTag("Obstacle"))
                     {

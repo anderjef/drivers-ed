@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
         }
         pausePanel.SetActive(false);
         gameOverPanel.SetActive(false);
-        car = FindObjectOfType<Car>();
+        car = FindFirstObjectByType<Car>();
 
         try
         { //load the previous settings
