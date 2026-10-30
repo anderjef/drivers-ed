@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
@@ -10,12 +8,12 @@ public class Obstacle : MonoBehaviour
     [HideInInspector] public bool needToReset = false; //protected objects will be spared from one respawn
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         obstacleManager = FindObjectOfType<ObstacleManager>();
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Car") && this.CompareTag("Money"))
         {

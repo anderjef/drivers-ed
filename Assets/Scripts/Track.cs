@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,14 +8,14 @@ public class Track : MonoBehaviour //THIS FILE IS DEPRECATED
     public GameObject money; //there is only one money prefab
     public Vector2 numObstacles, amountOfMoney; //can be modified within Unity; note that a numObstacles.y > trackLength / diameter of barrel (which is ~0.8) creates the chance for barrels to be too close to each other (such that they merge)
     private UIManager uiManager;
-    
+
     [HideInInspector]
     public List<GameObject> nObstacles, newMoney;
 
     private const float trackLength = 80f; //to be updated as required
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
         uiManager.ObjectiveInstruction.SetActive(false); //(tutorial mode) starts off with no objective instructions
@@ -42,7 +41,7 @@ public class Track : MonoBehaviour //THIS FILE IS DEPRECATED
         }
     }
 
-    void LayoutObstacles() //spawn obstacles
+    private void LayoutObstacles() //spawn obstacles
     {
         for (int i = 0; i < nObstacles.Count; ++i)
         {
@@ -53,7 +52,7 @@ public class Track : MonoBehaviour //THIS FILE IS DEPRECATED
         }
     }
 
-    void LayoutMoney()  //spawn money
+    private void LayoutMoney()  //spawn money
     {
         float minZP = 10f, randomZP;
         for (int i = 0; i < newMoney.Count; ++i)

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
@@ -12,11 +11,11 @@ public class ObstacleManager : MonoBehaviour
     public float barrelVariance = 7.8f, coinVariance = 2; //the range of z values behind where the object would otherwise spawn that the object can actually spawn within; can be modified within Unity; when the z distance between objects plus the object's variance is greater than the z-dimension of object, there is a chance for similar objects to spawn within each other; note that a road width (which is 12) less than the number of objects that can fall within the car's length (which Jeffrey suspects = max((car's length (which is 7) + the object's variance + the object's z dimension) / z distance between objects, 1)) times the sum of the car's width (which is 3) and the object's x dimension, creates the chance for a section of track to be untraversable without the car encountering the object
 
     [HideInInspector] public List<GameObject> obstacles, money;
-    
+
     private const float trackLength = 80f; //to be updated as required
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         car = FindObjectOfType<Car>();
         for (int i = 0; i < numObstacles; ++i) //initialize the array of obstacles objects
@@ -44,7 +43,7 @@ public class ObstacleManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //FIXME: consider running in background (as in don't update every frame)
         for (int i = 0; i < numObstacles; ++i)
@@ -76,7 +75,7 @@ public class ObstacleManager : MonoBehaviour
                 obstacles[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             }
         }
-        
+
         for (int i = 0; i < numMoney; ++i)
         {
             if (money[i].transform.localPosition.z < car.transform.localPosition.z - 5)

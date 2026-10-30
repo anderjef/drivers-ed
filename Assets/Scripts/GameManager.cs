@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +7,7 @@ public class GameManager : MonoBehaviour
     private GameObject canvas, mainMenuPanel, optionsPanel, accessibilityPanel; //these don't require linking because the program will find the objects in the Start function
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         canvas = GameObject.Find("Canvas");
         for (int i = 0; i < canvas.gameObject.transform.childCount; ++i)
@@ -40,7 +38,7 @@ public class GameManager : MonoBehaviour
         }
         //else if (gameManager != this)
         //{
-            //Destroy(gameObject); //was causing issues with reverting to a previous scene
+        //    Destroy(gameObject); //was causing issues with reverting to a previous scene
         //}
         DontDestroyOnLoad(gameManager);
     }

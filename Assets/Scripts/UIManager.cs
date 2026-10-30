@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System; //exceptions
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.IO; //read/write to file
-using System; //exceptions
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,11 +13,11 @@ public class UIManager : MonoBehaviour
     public Slider startDifficultySlider, difficultySlider; //used to modify the car's speed (and hence the game's difficulty)
     public Slider startSensitivitySlider, sensitivitySlider;
     public Slider carModel; //used to pick the car model
-    private bool[] reminders = { false, false, false, false };
-    private bool uiPauseWaiting;
+    private readonly bool[] reminders = { false, false, false, false };
+    private readonly bool uiPauseWaiting;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Tutorial")) //tutorial mode has no starting difficulty setting (automatically set to easiest difficulty)
         {
@@ -31,12 +28,13 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         car = FindObjectOfType<Car>();
 
-        try { //load the previous settings
+        try
+        { //load the previous settings
             string inputText = System.IO.File.ReadAllText(@"Assets/Text_Document.txt");
             if (inputText.Substring(0, 12) == "High score: ")
             {
                 int index = 12; //get index past "High score: "
-                for (; inputText[index] != '\n'; ++index) {} //ignore the high score value
+                for (; inputText[index] != '\n'; ++index) { } //ignore the high score value
                 index++; //get past the newline character
                 if (inputText.Substring(index, 12) == "Difficulty: ")
                 {

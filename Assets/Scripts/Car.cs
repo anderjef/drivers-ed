@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 //using UnityEditor; //assetdatabase //assetdatabase cannot be built
@@ -11,20 +10,21 @@ public class Car : MonoBehaviour
     public float collisionTime = 0; //can be modified within Unity
     public GameObject model, CoinReminder, CollideReminder, ControlReminder, SpeedReminder;
     public int currentLife = 3; //total number of lives; can be modified within Unity, but only the last three lives will be shown in the upper left corner
-    private bool collided = false, pauseWaiting = false;
-    static int collidedValue;
+    private bool collided = false;
+    private readonly bool pauseWaiting = false;
+    private static int collidedValue;
     private UIManager uiManager;
     private double controlsTimer = 0, collideReminderTimer = 0;
     private int money;
-    AudioSource tickSource;
-    AudioSource carRev;
+    private AudioSource tickSource;
+    private AudioSource carRev;
     private AudioClip audio1, audio2, audio3;
     [HideInInspector] public float sensitivity = 1;
     private float mousex = 0;
     private bool useMouse = true;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         controller = GetComponent<CharacterController>();
         speed = minSpeed; //car starts off slow
@@ -46,7 +46,7 @@ public class Car : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (pauseWaiting || uiManager.pausePanel.activeSelf || uiManager.gameOverPanel.activeSelf) //don't update location (move car), speed, or really anything while paused or during the game over panel
         {
@@ -202,7 +202,7 @@ public class Car : MonoBehaviour
         }
     }
 
-    IEnumerator Collided() //collision response
+    private IEnumerator Collided() //collision response
     {
         double time = this.collisionTime;
         collided = true;
@@ -242,7 +242,7 @@ public class Car : MonoBehaviour
             speed = maxSpeed;
         }
     }
-    
+
     public void updateCarModel(int carChoice)
     {
         for (int i = 1; i < 9; ++i) //ensures only one car model is active at a time
