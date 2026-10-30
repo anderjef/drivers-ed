@@ -10,19 +10,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         canvas = GameObject.Find("Canvas");
-        for (int i = 0; i < canvas.gameObject.transform.childCount; ++i)
+        for (int i = 0; i < canvas.transform.childCount; ++i)
         {
-            if (canvas.gameObject.transform.GetChild(i).name == "MainMenuPanel")
+            if (canvas.transform.GetChild(i).name == "MainMenuPanel")
             {
-                mainMenuPanel = canvas.gameObject.transform.GetChild(i).gameObject;
+                mainMenuPanel = canvas.transform.GetChild(i).gameObject;
             }
-            else if (canvas.gameObject.transform.GetChild(i).name == "OptionsPanel")
+            else if (canvas.transform.GetChild(i).name == "OptionsPanel")
             {
-                optionsPanel = canvas.gameObject.transform.GetChild(i).gameObject;
+                optionsPanel = canvas.transform.GetChild(i).gameObject;
             }
-            else if (canvas.gameObject.transform.GetChild(i).name == "AccessibilityPanel")
+            else if (canvas.transform.GetChild(i).name == "AccessibilityPanel")
             {
-                accessibilityPanel = canvas.gameObject.transform.GetChild(i).gameObject;
+                accessibilityPanel = canvas.transform.GetChild(i).gameObject;
             }
         }
         mainMenuPanel.SetActive(true);
