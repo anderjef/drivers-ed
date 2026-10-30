@@ -99,7 +99,7 @@ public class Car : MonoBehaviour
             }
             else if (mousex > (Screen.width * 0.6)) //right mouse movement
             {
-                mousex = mousex / Screen.width;
+                mousex /= Screen.width;
             }
             //Debug.Log("MOUSE: " + mousex/Screen.width + "          XPOS: " + Input.mousePosition.x + "     width: " + Screen.width);
             carMove.x *= mousex;
