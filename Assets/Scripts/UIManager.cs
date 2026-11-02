@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     public Slider startSensitivitySlider, sensitivitySlider;
     public Slider carModel; //used to pick the car model
     private readonly bool[] reminders = { false, false, false, false };
-    private readonly bool uiPauseWaiting;
 
     // Start is called before the first frame update
     private void Start()
