@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 //using UnityEditor; //assetdatabase //assetdatabase cannot be built
 
+[RequireComponent(typeof(CharacterController))]
 public class Car : MonoBehaviour
 {
     private CharacterController controller;
