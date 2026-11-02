@@ -72,17 +72,17 @@ public class Track : MonoBehaviour //THIS FILE IS DEPRECATED
     {
         if (other.CompareTag("Car")) //there is a box collider at the end of each section of track, that when it detects a collision with the car, it moves the section of track just completed to after the other piece of track and reinitializes the obstacles and money on it
         {
-            if (this.gameObject.name == "Occlusion Coverup Track" || SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial")) //Occlusion Coverup Track is used to cover up a graphical bug that occurs with occlusion culling and the car reaching the end of the second track; in order for this to work properly though, occlusion culling must be baked with Occlusion Coverup Track turned off in the editor (and after it's baked, Occlusion Coverup Track is set active)
+            if (gameObject.name == "Occlusion Coverup Track" || SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial")) //Occlusion Coverup Track is used to cover up a graphical bug that occurs with occlusion culling and the car reaching the end of the second track; in order for this to work properly though, occlusion culling must be baked with Occlusion Coverup Track turned off in the editor (and after it's baked, Occlusion Coverup Track is set active)
             {
-                this.gameObject.SetActive(false);
+                gameObject.SetActive(false);
                 if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial"))
                 {
-                    if (this.gameObject.name == "Track 1")
+                    if (gameObject.name == "Track 1")
                     {
                         uiManager.MovementInstruction.SetActive(false);
                         uiManager.ObjectiveInstruction.SetActive(true);
                     }
-                    else if (this.gameObject.name == "Track 5") //only tutorial has a fifth track; tutorial over
+                    else if (gameObject.name == "Track 5") //only tutorial has a fifth track; tutorial over
                     {
                         Car car = FindFirstObjectByType<Car>(); //to set the car's speed
                         uiManager.gameOverPanel.SetActive(true);

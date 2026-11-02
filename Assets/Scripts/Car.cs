@@ -43,7 +43,7 @@ public class Car : MonoBehaviour
         audio2 = ticksources[1].clip;
         audio3 = ticksources[2].clip;
         carRev = ticksources[3];
-        this.UpdateCarModel((int)uiManager.carModel.value);
+        UpdateCarModel((int)uiManager.carModel.value);
     }
 
     // Update is called once per frame
@@ -85,7 +85,7 @@ public class Car : MonoBehaviour
             useMouse = false;
         }
 
-        Vector3 carMove = new(sensitivity * maxSpeed * Time.deltaTime / 3, 0.7f - this.transform.localPosition.y, speed * Time.deltaTime); //y is kept at 0.7, z is forward
+        Vector3 carMove = new(sensitivity * maxSpeed * Time.deltaTime / 3, 0.7f - transform.localPosition.y, speed * Time.deltaTime); //y is kept at 0.7, z is forward
         if (useMouse)
         {
             mousex = Input.mousePosition.x; //get mouse x position
@@ -110,13 +110,13 @@ public class Car : MonoBehaviour
             carMove.x *= Input.GetAxis("Horizontal");
         }
 
-        if (this.transform.localPosition.x + carMove.x > 5) //setting left and right boundaries
+        if (transform.localPosition.x + carMove.x > 5) //setting left and right boundaries
         {
-            carMove.x = 5 - this.transform.localPosition.x;
+            carMove.x = 5 - transform.localPosition.x;
         }
-        else if (this.transform.localPosition.x + carMove.x < -5)
+        else if (transform.localPosition.x + carMove.x < -5)
         {
-            carMove.x = -5 - this.transform.localPosition.x;
+            carMove.x = -5 - transform.localPosition.x;
         }
 
         controller.Move(carMove); //actually move the car by the amounts specified in the carMove vector
@@ -205,7 +205,7 @@ public class Car : MonoBehaviour
 
     private IEnumerator Collided() //collision response
     {
-        double time = this.collisionTime;
+        double time = collisionTime;
         collided = true;
         double timer = 0;
         float lastCollision = 0;
@@ -248,16 +248,16 @@ public class Car : MonoBehaviour
     {
         for (int i = 1; i < 9; ++i) //ensures only one car model is active at a time
         {
-            this.transform.Find("Car" + i.ToString()).gameObject.SetActive(false);
+            transform.Find("Car" + i.ToString()).gameObject.SetActive(false);
         }
-        this.transform.Find("Car" + carChoice.ToString()).gameObject.SetActive(true);
-        model = this.transform.Find("Car" + carChoice.ToString()).gameObject;
-        //this.GetComponent<MeshCollider>().sharedMesh = (Mesh)AssetDatabase.LoadAssetAtPath("Assets/Racing Cars Pack 1/FBXs/Car" + carChoice.ToString() + ".fbx", typeof(Mesh)); //get the mesh (for the mesh collider) corresponding to the chosen car //assetdatabase cannot be built
+        transform.Find("Car" + carChoice.ToString()).gameObject.SetActive(true);
+        model = transform.Find("Car" + carChoice.ToString()).gameObject;
+        //GetComponent<MeshCollider>().sharedMesh = (Mesh)AssetDatabase.LoadAssetAtPath("Assets/Racing Cars Pack 1/FBXs/Car" + carChoice.ToString() + ".fbx", typeof(Mesh)); //get the mesh (for the mesh collider) corresponding to the chosen car //assetdatabase cannot be built
     }
 
     public int GetMoney()
     {
-        return this.money;
+        return money;
     }
 
     public void GoBackToMenu()
