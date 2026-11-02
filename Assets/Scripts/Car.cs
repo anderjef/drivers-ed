@@ -180,7 +180,7 @@ public class Car : MonoBehaviour
                     CollideReminder.SetActive(false);
                     ControlReminder.SetActive(false);
                     SpeedReminder.SetActive(false);
-                    Invoke("GoBackToMenu", 3f); //upon losing all lives, display GameOverPanel for 3 seconds before returning to menu
+                    Invoke(nameof(GoBackToMenu), 3f); //upon losing all lives, display GameOverPanel for 3 seconds before returning to menu
                 }
                 else
                 {
